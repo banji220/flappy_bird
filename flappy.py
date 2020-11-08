@@ -11,6 +11,7 @@ clock = pygame.time.Clock()
 
 
 
+
 background_surface = pygame.image.load("assets/background-day3.png").convert()
 background_surface = pygame.transform.scale2x(background_surface)
 
