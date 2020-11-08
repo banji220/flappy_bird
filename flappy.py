@@ -15,10 +15,15 @@ background_surface = pygame.image.load("assets/background-day3.png").convert()
 background_surface = pygame.transform.scale2x(background_surface)
 
 
+
+
 floor_surface = pygame.image.load("assets/base.png").convert()
 floor_surface = pygame.transform.scale2x(floor_surface)
 floor_x_position = 0
 
+
+
+bird_surface = pygame.image.load("asstes/")
 
 while True:
     
