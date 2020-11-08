@@ -30,7 +30,8 @@ while True:
     screen.blit(background_surface, (0, 0))
     floor_x_position -=1
     infinity_floor()
-    
+    if floor_x_position < -576:
+        floor_x_position = 0
     pygame.display.update()
     clock.tick(120)
     
