@@ -3,7 +3,7 @@ import pygame, sys
 pygame.init()
 def infinity_floor():
     screen.blit(floor_surface, (floor_x_position, 740))
-    screen.blit(floor_surface, (floor_x_position, 740))
+    screen.blit(floor_surface, (floor_x_position + 576, 740))
     
     
 screen = pygame.display.set_mode((576, 950))
