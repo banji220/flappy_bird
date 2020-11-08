@@ -23,7 +23,9 @@ floor_x_position = 0
 
 
 
-bird_surface = pygame.image.load("asstes/")
+bird_surface = pygame.image.load("assets/bluebird-upflap.png").convert()
+# bird_surface = pygame.transform.scale2x(bird_surface)
+bird_rectangle = bird_surface.get_rect(center=(100, 475))
 
 while True:
     
@@ -33,6 +35,7 @@ while True:
             sys.exit()
     
     screen.blit(background_surface, (0, 0))
+    screen.blit(bird_surface, bird_rectangle)
     floor_x_position -=1
     infinity_floor()
     if floor_x_position < -576:
