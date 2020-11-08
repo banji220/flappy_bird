@@ -9,7 +9,7 @@ def infinity_floor():
 screen = pygame.display.set_mode((576, 950))
 clock = pygame.time.Clock()
 
- 
+#! Game variables
 
 background_surface = pygame.image.load("assets/background-day3.png").convert()
 background_surface = pygame.transform.scale2x(background_surface)
@@ -23,8 +23,8 @@ floor_x_position = 0
 
 
 
-bird_surface = pygame.image.load("assets/bluebird-upflap.png").convert()
-# bird_surface = pygame.transform.scale2x(bird_surface)
+bird_surface = pygame.image.load("assets/redbird-upflap.png").convert()
+bird_surface = pygame.transform.scale2x(bird_surface)
 bird_rectangle = bird_surface.get_rect(center=(100, 475))
 
 while True:
