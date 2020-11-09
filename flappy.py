@@ -45,7 +45,6 @@ while True:
     
     bird_movement += gravity
     bird_rectangle.centery += bird_movement
-    gravity()
     screen.blit(bird_surface, bird_rectangle)
     floor_x_position -=1
     infinity_floor()
