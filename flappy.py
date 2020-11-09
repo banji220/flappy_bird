@@ -34,7 +34,7 @@ pipe_surface = pygame.image.load("assets/pipe-red.png").convert()
 pipe_surface = pygame.transform.scale2x(pipe_surface)
 pipe_list = []
 SPAWNPIPE = pygame.USEREVENT
-pygame.set_timer(SPAWNPIPE, 1200)
+pygame.time.set_timer(SPAWNPIPE, 1200)
 
 # Bird Red
 bird_surface = pygame.image.load("assets/redbird-upflap.png").convert()
