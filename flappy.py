@@ -8,6 +8,11 @@ def infinity_floor():
     screen.blit(floor_surface, (floor_x_position + 576, 740))
 
 
+# Creating Pipe at the x=288 and y=475 in the middle top of the surface
+def create_pipe():
+    new_pipe = pipe_surface.get_rect(midtop=(288, 475))
+    return new_pipe
+
 
 # Display width and height
 screen = pygame.display.set_mode((576, 950))
@@ -46,15 +51,21 @@ bird_rectangle = bird_surface.get_rect(center=(100, 475))
 while True:
     
     for event in pygame.event.get():
+        
+        # Logic: When user hit the exit button, the windows will be close without any error
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
+            
+        # Logic: When user press Space key, birds will go up -8 in the Y direction"
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE:
                 bird_movement = 0
                 bird_movement -= 8
+                
+        # Logic:  Making new pipes
         if event.type == SPAWNPIPE:
-            print("Pipe")
+            pipe_list.append(create_pipe())
         
     # BACKGROUND   
     screen.blit(background_surface, (0, 0))
