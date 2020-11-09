@@ -14,6 +14,12 @@ def create_pipe():
     return new_pipe
 
 
+# Moving Pipe to the left in x = -5 Postion"
+def move_pipe(pipes):
+    for pipe in pipes:
+        pipe.centerx -= 5
+        return pipe
+
 # Display width and height
 screen = pygame.display.set_mode((576, 950))
 clock = pygame.time.Clock()
