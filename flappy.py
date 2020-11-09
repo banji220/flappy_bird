@@ -82,6 +82,9 @@ while True:
     bird_rectangle.centery += bird_movement
     screen.blit(bird_surface, bird_rectangle)
     
+    # PIPE
+    pipe_list = move_pipe(pipe_list)
+    
     # FLOOR
     floor_x_position -=1
     infinity_floor()
