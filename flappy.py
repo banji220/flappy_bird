@@ -52,16 +52,21 @@ while True:
                 bird_movement -= 8
         
         
-        
+    # BACKGROUND   
     screen.blit(background_surface, (0, 0))
     
+    # BIRD
     bird_movement += gravity
     bird_rectangle.centery += bird_movement
     screen.blit(bird_surface, bird_rectangle)
+    
+    # FLOOR
     floor_x_position -=1
     infinity_floor()
+    # In this if statement when left floor is at the zero x position will restart again
     if floor_x_position < -576:
         floor_x_position = 0
+        
     pygame.display.update()
     clock.tick(120)
     
