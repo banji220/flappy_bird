@@ -40,7 +40,12 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
-    
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE:
+                bird_movement -= 8
+        
+        
+        
     screen.blit(background_surface, (0, 0))
     
     bird_movement += gravity
