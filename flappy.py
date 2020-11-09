@@ -20,18 +20,18 @@ clock = pygame.time.Clock()
 gravity = 0.15
 bird_movement = 0
 
-
 # Background-Day surface
 background_surface = pygame.image.load("assets/background-day3.png").convert()
 background_surface = pygame.transform.scale2x(background_surface)
-
-
 
 # Floor Surface
 floor_surface = pygame.image.load("assets/base.png").convert()
 floor_surface = pygame.transform.scale2x(floor_surface)
 floor_x_position = 0
 
+# Pip Surface
+pipe_surface = pygame.image.load("assets/pipe-red.png").convert()
+pipe_surface = pygame.transform.scale2x(pipe_surface)
 
 # Bird Red
 bird_surface = pygame.image.load("assets/redbird-upflap.png").convert()
