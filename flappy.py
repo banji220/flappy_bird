@@ -1,4 +1,4 @@
-import pygame, sys
+import pygame, sys, random
 
 
 #! Game Functions
@@ -10,8 +10,10 @@ def infinity_floor():
 
 # Creating Pipe at the x=288 and y=475 in the middle top of the surface
 def create_pipe():
-    new_pipe = pipe_surface.get_rect(midtop=(700, 475))
-    return new_pipe
+    random_pipe_height = random.choice(pipe_height)
+    bottom_pipe = pipe_surface.get_rect(midtop=(700, random_pipe_height))
+    top_pipe = pipe_surface.get_rect(midbottom=(700, random_pipe_height - 250))
+    return bottom_pipe, top_pipe
 
 
 # Moving Pipe to the left in x = -5 Postion"
@@ -53,6 +55,7 @@ pipe_surface = pygame.transform.scale2x(pipe_surface)
 pipe_list = []
 SPAWNPIPE = pygame.USEREVENT
 pygame.time.set_timer(SPAWNPIPE, 1200)
+pipe_height = [575, 400, 475, 300, 600, 200]
 
 # Bird Red
 bird_surface = pygame.image.load("assets/redbird-upflap.png").convert()
