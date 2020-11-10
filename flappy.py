@@ -12,9 +12,17 @@ def infinity_floor():
 def create_pipe():
     random_pipe_height = random.choice(pipe_height)
     bottom_pipe = pipe_surface.get_rect(midtop=(700, random_pipe_height))
-    top_pipe = pipe_surface.get_rect(midbottom=(700, random_pipe_height - 250))
+    top_pipe = pipe_surface.get_rect(midbottom=(700, random_pipe_height - 200))
     return bottom_pipe, top_pipe
 
+# Check Collisions (Birds and Pipes)
+def check_collision(pipes):
+    for pipe in pipes:
+        bird_rectangle.colliderect(pipe)
+        print("Collisions")
+    
+    if bird_rectangle.top <= -100 or bird_rectangle.bottom >= 740:
+        print("Collisions")
 
 # Moving Pipe to the left in x = -5 Postion"
 def move_pipe(pipes):
@@ -25,7 +33,11 @@ def move_pipe(pipes):
 # Draw Pipe 
 def draw_pipe(pipes):
     for pipe in pipes:
-        screen.blit(pipe_surface, pipe)
+        if pipe.bottom >= 800:
+            screen.blit(pipe_surface, pipe)
+        else:
+            flip_pipe = pygame.transform.flip(pipe_surface, False, True)
+            screen.blit(flip_pipe, pipe)
     
         
 # Display width and height
@@ -55,7 +67,7 @@ pipe_surface = pygame.transform.scale2x(pipe_surface)
 pipe_list = []
 SPAWNPIPE = pygame.USEREVENT
 pygame.time.set_timer(SPAWNPIPE, 1200)
-pipe_height = [575, 400, 475, 300, 600, 200]
+pipe_height = [575, 595, 400, 475, 300, 350, 600, 250]
 
 # Bird Red
 bird_surface = pygame.image.load("assets/redbird-upflap.png").convert()
@@ -81,7 +93,7 @@ while True:
                 
         # Logic:  Making new pipes
         if event.type == SPAWNPIPE:
-            pipe_list.append(create_pipe())
+            pipe_list.extend(create_pipe())
             
               
     # BACKGROUND   
@@ -92,6 +104,9 @@ while True:
     bird_rectangle.centery += bird_movement
     screen.blit(bird_surface, bird_rectangle)
     
+    # Calling Collision Function
+    check_collision(pipe_list)
+    
     # PIPE
     pipe_list = move_pipe(pipe_list)
     draw_pipe(pipe_list)
@@ -100,7 +115,7 @@ while True:
     floor_x_position -=1
     infinity_floor()
     # In this if statement when left floor is at the zero x position will restart again
-    if floor_x_position < -576:
+    if floor_x_position <= -576:
         floor_x_position = 0
         
     pygame.display.update()
