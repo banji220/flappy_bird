@@ -10,7 +10,7 @@ def infinity_floor():
 
 # Creating Pipe at the x=288 and y=475 in the middle top of the surface
 def create_pipe():
-    new_pipe = pipe_surface.get_rect(midtop=(288, 475))
+    new_pipe = pipe_surface.get_rect(midtop=(700, 475))
     return new_pipe
 
 
