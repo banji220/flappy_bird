@@ -1,6 +1,6 @@
 import pygame, sys
 
-pygame.init()
+
 #! Game Functions
 # Putting two floor_surface next to each other
 def infinity_floor():
@@ -18,9 +18,16 @@ def create_pipe():
 def move_pipe(pipes):
     for pipe in pipes:
         pipe.centerx -= 5
-        return pipe
+    return pipes
 
+# Draw Pipe 
+def draw_pipe(pipes):
+    for pipe in pipes:
+        screen.blit(pipe_surface, pipe)
+    
+        
 # Display width and height
+pygame.init()
 screen = pygame.display.set_mode((576, 950))
 clock = pygame.time.Clock()
 
@@ -84,6 +91,7 @@ while True:
     
     # PIPE
     pipe_list = move_pipe(pipe_list)
+    draw_pipe(pipe_list)
     
     # FLOOR
     floor_x_position -=1
