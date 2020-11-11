@@ -90,9 +90,15 @@ while True:
             
         # Logic: When user press Space key, birds will go up -8 in the Y direction"
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_SPACE:
+            
+            if event.key == pygame.K_SPACE and game_active == True:
                 bird_movement = 0
                 bird_movement -= 6
+            
+            # This if statement will be run and Tru if User press "Space Key" and the game_active == False (Game_over)
+            if event.key == pygame.K_SPACE and game_active == False:
+                game_active = True
+                
                 
         # Logic:  Making new pipes
         if event.type == SPAWNPIPE:
