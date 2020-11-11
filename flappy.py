@@ -51,6 +51,7 @@ clock = pygame.time.Clock()
 #! Game Variables
 gravity = 0.15
 bird_movement = 0
+game_active = True
 
 # Background-Day surface
 background_surface = pygame.image.load("assets/background-day3.png").convert()
@@ -98,18 +99,18 @@ while True:
               
     # BACKGROUND   
     screen.blit(background_surface, (0, 0))
-    
-    # BIRD
-    bird_movement += gravity
-    bird_rectangle.centery += bird_movement
-    screen.blit(bird_surface, bird_rectangle)
-    
-    # Calling Collision Function
-    check_collision(pipe_list)
-    
-    # PIPE
-    pipe_list = move_pipe(pipe_list)
-    draw_pipe(pipe_list)
+    if game_active:
+        # BIRD
+        bird_movement += gravity
+        bird_rectangle.centery += bird_movement
+        screen.blit(bird_surface, bird_rectangle)
+        
+        # Calling Collision Function
+        check_collision(pipe_list)
+        
+        # PIPE
+        pipe_list = move_pipe(pipe_list)
+        draw_pipe(pipe_list)
     
     # FLOOR
     floor_x_position -=1
