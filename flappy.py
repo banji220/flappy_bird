@@ -18,11 +18,13 @@ def create_pipe():
 # Check Collisions (Birds and Pipes)
 def check_collision(pipes):
     for pipe in pipes:
-        bird_rectangle.colliderect(pipe)
-        print("Collisions")
-    
+        if bird_rectangle.colliderect(pipe):
+            return False
+        
     if bird_rectangle.top <= -100 or bird_rectangle.bottom >= 740:
-        print("Collisions")
+        return False
+    
+    return True
 
 # Moving Pipe to the left in x = -5 Postion"
 def move_pipe(pipes):
@@ -100,20 +102,22 @@ while True:
     # BACKGROUND   
     screen.blit(background_surface, (0, 0))
     if game_active:
+        # Calling Collision Function
+        game_active = check_collision(pipe_list)
+        
         # BIRD
         bird_movement += gravity
         bird_rectangle.centery += bird_movement
         screen.blit(bird_surface, bird_rectangle)
         
-        # Calling Collision Function
-        check_collision(pipe_list)
         
         # PIPE
         pipe_list = move_pipe(pipe_list)
         draw_pipe(pipe_list)
     
     # FLOOR
-    floor_x_position -=1
+    # floor_speed
+    floor_x_position -=2.5
     infinity_floor()
     # In this if statement when left floor is at the zero x position will restart again
     if floor_x_position <= -576:
