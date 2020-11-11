@@ -44,7 +44,7 @@ def check_collision(pipes):
         
 
 def rotate_bird(bird):
-    new_bird = pygame.transform.rotozoom(bird, -bird_movement * -3, 1)
+    new_bird = pygame.transform.rotozoom(bird, bird_movement * -3, 1)
     return new_bird
     
 # Display width and height
