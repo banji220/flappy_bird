@@ -15,16 +15,6 @@ def create_pipe():
     top_pipe = pipe_surface.get_rect(midbottom=(700, random_pipe_height - 200))
     return bottom_pipe, top_pipe
 
-# Check Collisions (Birds and Pipes)
-def check_collision(pipes):
-    for pipe in pipes:
-        if bird_rectangle.colliderect(pipe):
-            return False
-        
-    if bird_rectangle.top <= -100 or bird_rectangle.bottom >= 740:
-        return False
-    
-    return True
 
 # Moving Pipe to the left in x = -5 Postion"
 def move_pipe(pipes):
@@ -41,6 +31,17 @@ def draw_pipe(pipes):
             flip_pipe = pygame.transform.flip(pipe_surface, False, True)
             screen.blit(flip_pipe, pipe)
     
+# Check Collisions (Birds and Pipes)
+def check_collision(pipes):
+    for pipe in pipes:
+        if bird_rectangle.colliderect(pipe):
+            return False
+        
+    if bird_rectangle.top <= -100 or bird_rectangle.bottom >= 740:
+        return False
+    
+    return True
+        
         
 # Display width and height
 pygame.init()
@@ -116,8 +117,9 @@ while True:
         
         # BIRD
         bird_movement += gravity
+        rotated_bird = rotate_bird(bird_surface)
         bird_rectangle.centery += bird_movement
-        screen.blit(bird_surface, bird_rectangle)
+        screen.blit(rotated_bird , bird_rectangle)
         
         
         # PIPE
