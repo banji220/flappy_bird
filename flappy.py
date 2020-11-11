@@ -35,6 +35,7 @@ def draw_pipe(pipes):
 def check_collision(pipes):
     for pipe in pipes:
         if bird_rectangle.colliderect(pipe):
+            death_sound.play()
             return False
         
     if bird_rectangle.top <= -100 or bird_rectangle.bottom >= 740:
@@ -66,7 +67,7 @@ def score_display(game_state):
         
         # High Score
         high_score_surface = game_font.render(f"High score: {int(high_score)}", True, (255, 255, 255))
-        high_score_rectangle = high_score_surface.get_rect(center=(288, 300))
+        high_score_rectangle = high_score_surface.get_rect(center=(288, 140))
         screen.blit(high_score_surface, high_score_rectangle)
         
 
@@ -76,6 +77,7 @@ def update_score(score, high_score):
     return high_score
 
 # Display width and height
+pygame.mixer.init()
 pygame.init()
 screen = pygame.display.set_mode((576, 950))
 clock = pygame.time.Clock()
@@ -121,8 +123,16 @@ pygame.time.set_timer(SPAWNPIPE, 1200)
 pipe_height = [575, 595, 400, 475, 300, 350, 600, 250]
 
 
+# Game Over Surface 
+game_over_surface = pygame.image.load("assets/message.png").convert_alpha()
+game_over_surface = pygame.transform.scale2x(game_over_surface)
+game_over_recatangle = game_over_surface.get_rect(center = (288, 475))
 
+# Sounds
 
+flap_sound = pygame.mixer.Sound("sounds/wing.wav")
+death_sound = pygame.mixer.Sound("sounds/hit.wav")
+score_sound = pygame.mixer.Sound("sounds/point.wav")
 
 while True:
     
@@ -139,7 +149,8 @@ while True:
             if event.key == pygame.K_SPACE and game_active == True:
                 bird_movement = 0
                 bird_movement -= 6
-            
+                flap_sound.play()
+                
             # This if statement will be run and Tru if User press "Space Key" and the game_active == False (Game_over)
             if event.key == pygame.K_SPACE and game_active == False:
                 game_active = True
@@ -182,7 +193,9 @@ while True:
         # Score Display
         score += 0.01 
         score_display("main_game")
+    # Game Over Logic
     else:
+        screen.blit(game_over_surface, game_over_recatangle)
         high_score = update_score(score, high_score)
         score_display("game_over")
     
