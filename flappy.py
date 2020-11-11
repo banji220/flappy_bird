@@ -28,8 +28,8 @@ def draw_pipe(pipes):
         if pipe.bottom >= 800:
             screen.blit(pipe_surface, pipe)
         else:
-            flip_pipe = pygame.transform.flip(pipe_surface, False, True)
-            screen.blit(flip_pipe, pipe)
+            flap_pipe = pygame.transform.flip(pipe_surface, False, True)
+            screen.blit(flap_pipe, pipe)
     
 # Check Collisions (Birds and Pipes)
 def check_collision(pipes):
@@ -78,9 +78,14 @@ pygame.time.set_timer(SPAWNPIPE, 1200)
 pipe_height = [575, 595, 400, 475, 300, 350, 600, 250]
 
 # Bird Red
-bird_surface = pygame.image.load("assets/redbird-upflap.png").convert_alpha()
-bird_surface = pygame.transform.scale2x(bird_surface)
+bird_downflap = pygame.transform.scale2x(pygame.image.load("assets/redbird-downflap.png")).convert_alpha()
+bird_midflap = pygame.transform.scale2x(pygame.image.load("assets/redbird-midflap.png")).convert_alpha()
+bird_upflap = pygame.transform.scale2x(pygame.image.load("assets/redbird-upflap.png")).convert_alpha()
+bird_frames = [bird_downflap, bird_midflap, bird_upflap]
+bird_index = 0
+bird_surface = bird_frames[bird_index]
 bird_rectangle = bird_surface.get_rect(center=(100, 475))
+
 
 
 
