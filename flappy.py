@@ -78,7 +78,7 @@ pygame.time.set_timer(SPAWNPIPE, 1200)
 pipe_height = [575, 595, 400, 475, 300, 350, 600, 250]
 
 # Bird Red
-bird_surface = pygame.image.load("assets/redbird-upflap.png").convert()
+bird_surface = pygame.image.load("assets/redbird-upflap.png").convert_alpha()
 bird_surface = pygame.transform.scale2x(bird_surface)
 bird_rectangle = bird_surface.get_rect(center=(100, 475))
 
