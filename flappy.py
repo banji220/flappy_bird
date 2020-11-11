@@ -98,6 +98,9 @@ while True:
             # This if statement will be run and Tru if User press "Space Key" and the game_active == False (Game_over)
             if event.key == pygame.K_SPACE and game_active == False:
                 game_active = True
+                pipe_list.clear()
+                bird_rectangle.center = (100, 475)
+                bird_movement = 0
                 
                 
         # Logic:  Making new pipes
