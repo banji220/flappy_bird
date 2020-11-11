@@ -42,7 +42,11 @@ def check_collision(pipes):
     
     return True
         
-        
+
+def rotate_bird(bird):
+    new_bird = pygame.transform.rotozoom(bird, -bird_movement * -3, 1)
+    return new_bird
+    
 # Display width and height
 pygame.init()
 screen = pygame.display.set_mode((576, 950))
