@@ -92,7 +92,7 @@ while True:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE:
                 bird_movement = 0
-                bird_movement -= 8
+                bird_movement -= 6
                 
         # Logic:  Making new pipes
         if event.type == SPAWNPIPE:
