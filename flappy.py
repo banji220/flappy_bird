@@ -132,7 +132,7 @@ game_over_recatangle = game_over_surface.get_rect(center = (288, 475))
 
 flap_sound = pygame.mixer.Sound("sounds/wing.wav")
 death_sound = pygame.mixer.Sound("sounds/hit.wav")
-score_sound = pygame.mixer.Sound("sounds/point.wav")
+
 
 while True:
     
